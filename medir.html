@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { margin: 0; background: #000; }
+    #out { position: fixed; top: 0; left: 0; background: rgba(0,0,0,.8); color: #0f0; font-family: monospace; font-size: 1.2rem; padding: .5rem 1rem; z-index: 999; }
+    img { display: block; width: 100%; cursor: crosshair; }
+  </style>
+</head>
+<body>
+  <div id="out">Haz click en el mapa</div>
+  <img id="img" src="images/space_syntax_escalado_viv.png">
+  <script>
+    document.getElementById('img').addEventListener('click', function(e) {
+      var r = this.getBoundingClientRect();
+      var px = Math.round((e.clientX - r.left) / r.width * 1562);
+      var py = Math.round((e.clientY - r.top) / r.height * 1006);
+      document.getElementById('out').textContent = px + ', ' + py;
+    });
+  </script>
+</body>
+</html>

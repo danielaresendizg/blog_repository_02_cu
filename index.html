@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ciudad Universitaria as a spatial culture of protest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0; padding: 0;
+      background: #fff; color: #1a1a1a;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.2rem;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* top nav bar */
+    .topbar {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+    }
+    .back {
+      font-family: system-ui, sans-serif;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #777;
+      text-decoration: none;
+    }
+    .back:hover { color: #111; }
+
+    /* hero */
+    .hero {
+      max-width: 680px;
+      margin: 0 0 0 80px;
+      padding: 56px 24px 0;
+    }
+    .kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #c0392b;
+      margin: 0 0 1rem;
+    }
+    .hero h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: #111;
+      margin: 0 0 1.1rem;
+      letter-spacing: -.01em;
+    }
+    .byline {
+      font-family: system-ui, sans-serif;
+      font-size: .82rem;
+      color: #777;
+      margin: 0 0 2.5rem;
+      letter-spacing: .02em;
+    }
+    .byline strong { color: #333; font-weight: 600; }
+
+    /* article body */
+    .wrap {
+      max-width: 680px;
+      margin: 0 0 0 80px;
+      padding: 48px 24px 96px;
+    }
+
+    .content p {
+      margin: 0 0 1.5rem;
+      color: #222;
+    }
+    .drop-cap {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 4.2rem;
+      font-weight: 800;
+      float: left;
+      line-height: .78;
+      margin: .08em .08em 0 0;
+      color: #111;
+    }
+    .content strong { font-weight: 600; color: #111; }
+    .content a { color: #c0392b; text-decoration: none; border-bottom: 1px solid rgba(192,57,43,.25); }
+    .content a:hover { border-bottom-color: #c0392b; }
+
+    /* section headings */
+    .content h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #111;
+      margin: 2.5rem 0 1rem;
+      line-height: 1.3;
+    }
+
+    blockquote {
+      margin: 2rem 0;
+      padding: 1.1rem 1.5rem;
+      border-left: 4px solid #c0392b;
+      font-style: italic;
+      color: #444;
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    /* inline image */
+    .inline-img {
+      margin: 2.5rem -48px;
+      background: #f2f2f2;
+    }
+    .inline-img img { width: 100%; height: auto; display: block; }
+    .inline-img img.cropped { max-height: 480px; object-fit: cover; object-position: center; }
+    .inline-img figcaption {
+      padding: .55rem 48px .7rem;
+      font-family: system-ui, sans-serif;
+      font-size: .7rem;
+      color: #999;
+      line-height: 1.5;
+    }
+    .inline-img figcaption a { color: #999; border-bottom: 1px dotted #ccc; text-decoration: none; }
+    .inline-img figcaption a:hover { color: #333; }
+    @media (max-width: 600px) {
+      .inline-img { margin: 2rem -20px; }
+      .inline-img figcaption { padding: .55rem 20px .7rem; }
+    }
+
+    /* placeholder while images are being curated */
+    .img-placeholder {
+      margin: 2.5rem -48px;
+      background: #f5f5f5;
+      border: 2px dashed #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: #bbb;
+      font-family: system-ui, sans-serif;
+      font-size: .8rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 600px) { .img-placeholder { margin: 2rem -20px; } }
+
+    /* map slider */
+    figure.map-slider-wrap {
+      margin: 7.5rem -48px 2.5rem;
+      padding: 0;
+    }
+    .map-slider-labels {
+      display: flex;
+      justify-content: space-between;
+      padding: .55rem 48px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .map-slider-caption {
+      padding: .3rem 48px .7rem;
+      font-family: system-ui, sans-serif;
+      font-size: .7rem;
+      color: #999;
+      line-height: 1.5;
+    }
+    .map-legend-float {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      z-index: 10;
+      background: rgba(255,255,255,.9);
+      padding: .25rem .5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .48rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .map-legend-float .syntax-legend-bar {
+      width: 80px;
+      height: 5px;
+      margin: 2px 0;
+    }
+    .map-legend-float .syntax-legend-labels {
+      width: 80px;
+      font-size: .44rem;
+    }
+    .map-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1562 / 1006;
+      overflow: hidden;
+      cursor: col-resize;
+      user-select: none;
+      display: block;
+      margin-bottom: 0;
+    }
+    .map-slider-back, .map-slider-front {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+    .map-slider-back img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: left top;
+      display: block;
+    }
+    .map-slider-front img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: left top;
+      display: block;
+      opacity: 0.7;
+    }
+    .map-slider-front {
+      width: 50%;
+      overflow: hidden;
+    }
+    .map-slider-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: #fff;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-slider-handle {
+      width: 36px;
+      height: 36px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    .explore-btn-wrap {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .explore-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: none;
+      border: 1.5px solid #0000ff;
+      color: #0000ff;
+      padding: .6rem 1.2rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background .2s, color .2s;
+    }
+    .explore-btn:hover { background: #0000ff; color: #fff; }
+
+    /* annotated syntax map */
+    .syntax-annotated { overflow: visible; }
+    .syntax-img-wrap {
+      position: relative;
+      display: block;
+      padding: 0;
+      overflow: visible;
+      margin-bottom: 0;
+    }
+    .syntax-annotated figcaption {
+      padding-top: 0;
+    }
+    .syntax-img-wrap img { width: 100%; display: block; }
+    .syntax-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .ann-group { pointer-events: all; cursor: pointer; }
+    .ann-group circle { pointer-events: all; }
+    .ann-group .syn-sub { opacity: 0; transition: opacity .25s ease; }
+    .ann-group .syn-sub { transition: opacity .2s ease; }
+    .syn-label {
+      font-family: system-ui, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      fill: #222;
+      letter-spacing: .01em;
+    }
+    .syn-sub {
+      font-family: system-ui, sans-serif;
+      font-size: 22px;
+      fill: #555;
+    }
+    .syn-legend-title {
+      font-family: system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      fill: #111;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .syn-legend-label {
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    .ann-group { cursor: pointer; transition: opacity .2s; }
+    .ann-group .syn-label { transition: fill .2s, font-size .2s; }
+    .ann-group path { transition: stroke .2s; }
+    .ann-group:hover .syn-label { fill: #0000ff; font-size: 43px; }
+    .ann-group:hover .syn-sub { opacity: 1; fill: #333; }
+    .ann-group:hover path { stroke: #0000ff; stroke-width: 3; }
+    .ann-group:hover .ann-dot { fill: #0000ff; r: 15px; }
+
+
+    /* syntax legend */
+    .syntax-legend {
+      padding: .6rem .8rem .8rem;
+      background: #f2f2f2;
+      margin-top: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .syntax-legend-title {
+      font-family: system-ui, sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #555;
+    }
+    .syntax-legend-bar {
+      width: 200px;
+      height: 10px;
+      border-radius: 2px;
+      background: linear-gradient(to right, #00007f, #0000ff, #00ffff, #00ff00, #ffff00, #ff8000, #ff0000);
+    }
+    .syntax-legend-labels {
+      width: 200px;
+      display: flex;
+      justify-content: space-between;
+      font-family: system-ui, sans-serif;
+      font-size: .62rem;
+      color: #999;
+    }
+
+    /* inline video */
+    .inline-video {
+      margin: 2.5rem -48px;
+      background: #111;
+    }
+    .inline-video video {
+      width: 100%;
+      display: block;
+      max-height: 560px;
+      object-fit: cover;
+    }
+    .inline-video figcaption {
+      padding: .55rem 48px .7rem;
+      font-family: system-ui, sans-serif;
+      font-size: .7rem;
+      color: #999;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .inline-video { margin: 2rem -20px; }
+      .inline-video figcaption { padding: .55rem 20px .7rem; }
+    }
+
+    /* protest gallery */
+    .protest-gallery {
+      margin: 2.5rem -200px;
+    }
+    .gallery-moment {
+      margin-bottom: 2.5rem;
+    }
+    .gallery-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #c0392b;
+      padding: 0 0 .75rem;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 1rem;
+    }
+    .gallery-grid {
+      display: grid;
+      gap: 4px;
+    }
+    .gallery-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .gallery-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid figure {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+    .gallery-grid figure img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(30%);
+      transition: filter .3s ease, transform .3s ease;
+    }
+    .gallery-grid figure:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+    .gallery-grid figcaption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,.78);
+      color: #eee;
+      font-family: system-ui, sans-serif;
+      font-size: .68rem;
+      line-height: 1.5;
+      padding: .6rem .75rem .75rem;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+    .gallery-grid figure:hover figcaption { opacity: 1; }
+
+    .moment-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    @media (max-width: 700px) {
+      .protest-gallery { margin: 2rem -20px; }
+      .gallery-grid--3 { grid-template-columns: 1fr; }
+      .gallery-grid--2 { grid-template-columns: 1fr; }
+    }
+
+    /* glossary tooltips */
+    .gloss {
+      border-bottom: 2px dotted #0000ff;
+      color: #0000ff;
+      cursor: help;
+      position: relative;
+      transition: font-weight .1s;
+    }
+    .gloss:hover { font-weight: 700; }
+    .gloss-tip {
+      display: none;
+      position: fixed;
+      width: 200px;
+      background: #0000ff;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      font-size: .72rem;
+      line-height: 1.5;
+      padding: .65rem .8rem;
+      border-radius: 3px;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .gloss-tip.visible { display: block; }
+
+    /* references */
+    .refs {
+      margin-top: 48px;
+      border-top: 2px solid #111;
+      padding-top: 24px;
+    }
+    .refs h2 {
+      font-family: system-ui, sans-serif;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #111;
+      margin: 0 0 1rem;
+      font-weight: 700;
+    }
+    .refs ul { padding-left: 1.2rem; margin: 0; }
+    .refs li {
+      margin: .65rem 0;
+      font-family: system-ui, sans-serif;
+      font-size: .82rem;
+      color: #555;
+      line-height: 1.6;
+    }
+    .refs a { color: #555; text-decoration: underline; text-underline-offset: 3px; }
+    .refs a:hover { color: #111; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 36px 20px 0; }
+      .wrap { padding: 32px 20px 72px; }
+      .content p:first-of-type::first-letter { font-size: 3.2rem; }
+    }
+
+    /* ── PHOTO LAYER ── */
+    .photo-col {
+      position: fixed;
+      top: 0; right: 0;
+      width: 420px;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 48px 20px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 50;
+      pointer-events: all;
+    }
+
+    .photo-item {
+      position: relative;
+      opacity: 0.18;
+      filter: grayscale(60%);
+      transition: opacity .4s, filter .4s, transform .35s;
+      transform-origin: center center;
+    }
+    .photo-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s;
+    }
+    .photo-item .photo-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,.82);
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      font-size: .62rem;
+      line-height: 1.45;
+      padding: .5rem .6rem;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .photo-item .photo-label strong {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .5rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #c0392b;
+      margin-bottom: .25rem;
+    }
+    .photo-item .photo-label em {
+      display: block;
+      margin-top: .3rem;
+      font-size: .55rem;
+      color: #aaa;
+      font-style: normal;
+    }
+    /* hover en estado normal */
+    .photo-col:not(.active) .photo-item:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.04);
+      z-index: 2;
+    }
+    .photo-col:not(.active) .photo-item:hover .photo-label { opacity: 1; }
+    .photo-col:not(.active):has(.photo-item:hover) .photo-item:not(:hover) {
+      opacity: 0.06;
+    }
+    /* hover en estado activo */
+    .photo-col.active .photo-item:hover {
+      transform: scale(1.04);
+      z-index: 2;
+    }
+    .photo-col.active .photo-item:hover .photo-label { opacity: 1; }
+    .photo-col.active:has(.photo-item:hover) .photo-item:not(:hover) {
+      opacity: 0.06 !important;
+      filter: grayscale(100%);
+    }
+    .photo-item .photo-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .52rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* mapas destacados sobre el overlay cuando hay momento seleccionado */
+    .moment-selected .map-highlight {
+      position: relative;
+      z-index: 45;
+    }
+
+    /* layout side by side cuando hay hover en foto */
+    .maps-side-by-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .maps-side-by-side .map-slider-wrap {
+      margin: 0;
+    }
+    .maps-side-by-side #covisMap {
+      margin: 0;
+    }
+    .maps-side-by-side #covisMap img {
+      width: 100% !important;
+    }
+    .maps-side-by-side #covisWrap {
+      width: 100% !important;
+    }
+
+    /* círculo de localización */
+    .loc-dot {
+      display: none;
+      position: absolute;
+      width: 20px; height: 20px;
+      background: #ff003c;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 4px rgba(255,0,60,.3), 0 0 16px 6px rgba(255,0,60,.5);
+      animation: pulse 1.2s infinite;
+      pointer-events: none;
+      z-index: 100;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 4px rgba(255,0,60,.3), 0 0 16px 6px rgba(255,0,60,.5); }
+      50%  { box-shadow: 0 0 0 8px rgba(255,0,60,.15), 0 0 28px 10px rgba(255,0,60,.4); }
+      100% { box-shadow: 0 0 0 4px rgba(255,0,60,.3), 0 0 16px 6px rgba(255,0,60,.5); }
+    }
+
+    /* botón see location */
+    .moment-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .52rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid #ccc;
+      color: #888;
+      padding: .25rem .5rem;
+      cursor: pointer;
+      border-radius: 2px;
+      flex: 1;
+      transition: all .2s;
+    }
+    .moment-btn:hover { border-color: #111; color: #111; }
+    .moment-btn.active { background: #c0392b; border-color: #c0392b; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <a class="back" href="https://danielaresendizg.github.io/en/blog.html">← Blog</a>
+  </nav>
+
+  <!-- columna de fotos fija -->
+  <div class="photo-col" id="photoCol">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#c0392b;display:inline-block;padding:.3rem .7rem;border-radius:2px;margin:0 0 12px;">Hover photos to locate on maps</p>
+    <div class="photo-item" data-moment="m68" data-covis="149,781" data-slider="434,330">
+      <img src="images/unam_68.webp" alt="1968">
+      <span class="photo-label"><strong>Estadio Olímpico · 1968, days before the Olympics</strong>The army occupies CU days before the Tlatelolco massacre. The campus, designed for open movement and assembly, is seized by the state, turning its own spatial logic against students. <em>UNAM / Insurgentes, 1968</em></span>
+    </div>
+    <div class="photo-item" data-moment="m68" data-covis="1005,670" data-slider="739,262">
+      <img src="images/unam_68_2.webp" alt="1968">
+      <span class="photo-label"><strong>Las Islas · 1968, with Rector Javier Barros Sierra</strong>Students march past the Central Library. The axial paths of CU channel the crowd into a unified procession, the spatial configuration transforms individual dissent into collective, legible protest. <em>UNAM Global, 1968</em></span>
+    </div>
+    <div class="photo-item" data-moment="m68" data-covis="386,750" data-slider="605,310">
+      <img src="images/unam_68_3.jpeg" alt="1968">
+      <span class="photo-label"><strong>Filosofía corridor, near Las Islas · 1968</strong>Students detained on campus grounds by armed soldiers. The open esplanades meant for co-presence become sites of forced surrender, the same visibility that amplifies protest now exposes those who resist. <em>AGN, DFS, 1968</em></span>
+    </div>
+    <div class="photo-item" data-moment="m2014" data-covis="887,352" data-slider="604,191">
+      <img src="images/unam_43_1.jpg" alt="2014">
+      <span class="photo-label"><strong>Pasillos Filosofía · 2014</strong>Portraits of the 43 disappeared students cover a corridor of Las Islas. The shared circulation space becomes an unavoidable memorial, forcing encounter with absence and demanding response. <em>Regeneración.mx</em></span>
+    </div>
+    <div class="photo-item" data-moment="m2014" data-covis="988,354" data-slider="627,192">
+      <img src="images/unam_43_2.webp" alt="2014">
+      <span class="photo-label"><strong>Filosofía y Letras · 2014</strong>43 empty chairs arranged in an open space of the campus, each carrying a face. The installation occupies a convex space, fully visible from all angles, turning absence into presence. <em>Cuartoscuro</em></span>
+    </div>
+    <div class="photo-item" data-moment="mfem" data-covis="593,791" data-slider="489,326">
+      <img src="images/unam_fem_1.jpg" alt="2019–2020">
+      <span class="photo-label"><strong>Explanada Rectoría · 2019</strong>Hundreds gather at the Rectoría esplanade performing Un violador en tu camino. The wide, open field becomes a stage directed at institutional authority and broadcast to the country. <em>Galo Cañas / Cuartoscuro</em></span>
+    </div>
+    <div class="photo-item" data-moment="mfem" data-covis="1038,1050" data-slider="703,383">
+      <img src="images/unam_fem_2.png" alt="2019–2020">
+      <span class="photo-label"><strong>Patio de Arquitectura · 2020</strong>Feminist slogans painted on the patio floor. The campus surface itself becomes a medium, the message is written into the spatial fabric of the institution. <em>@mujeres_organizadas_fa</em></span>
+    </div>
+    <div class="photo-item" data-moment="mfem" data-covis="1005,670" data-slider="739,262">
+      <img src="images/unam_fem_3.png" alt="2019–2020">
+      <span class="photo-label"><strong>Las Islas · 2019</strong>Protesters occupy the steps of CU with the Central Library behind them. The symbolic weight of the mural amplifies the movement's message, connecting the feminist demand to the broader identity of the university. <em>@mujeres_organizadas_fa</em></span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="kicker">Spatial culture · Protest · Politics</div>
+    <h1>Ciudad Universitaria as a spatial culture of protest</h1>
+    <div class="byline">By <strong>Daniela Reséndiz</strong></div>
+  </header>
+
+  <div class="wrap">
+    <article class="content">
+
+      <p>Ciudad Universitaria (CU), the central campus of the National Autonomous University of México, is a public institution of national importance in education, research, and cultural development. However, CU also plays a distinctive and recurring role in the political life of México. This essay explores it as a spatial culture, focusing specifically on how its physical configuration and institutional structure support the emergence of student-led social movements. Through <span class="gloss">space syntax theory<span class="gloss-tip">A theory of space and a set of analytical, quantitative and descriptive tools for analysing the layout of space in buildings and cities. It provides insights into both the social antecedents and consequences of spatial form. — Hillier &amp; Hanson (1984), <em>The Social Logic of Space</em>, pp. 48–51.</span></span> and relational spatial analysis, the argument presented here is that <strong>CU is not merely a backdrop to political action, but a space that actively shapes and amplifies it.</strong></p>
+
+      <p>Designed in the post-revolutionary context of mid-20th century Mexico, CU combined modernist architecture with nationalist symbolism. Monumental murals—shaped by the Mexican muralist movement—were integrated to reinforce civic values and national identity (<a href="#ref-mello">Mello, 2022</a>). Inaugurated in 1954, CU exemplifies a spatial practice where design and institutional autonomy converge to support public mobilisation. Its open, interconnected layout, including Las Islas and the Rectoría esplanade, fosters <span class="gloss" data-offset="-120">co-presence<span class="gloss-tip">The group of people who may not know each other, or even acknowledge each other, who appear in spaces that they share and use. The raw material for the creation of community. — Hillier (1996, 2007), <em>Space is the Machine</em>, p. 141.</span></span> and visibility—conditions that make collective action not only possible but structurally predictable.</p>
+
+      <!-- WRAPPER MAPAS -->
+      <div id="mapsWrapper">
+      <!-- SLIDER: unam_layout vs space_syntax_1 -->
+      <figure class="map-slider-wrap map-highlight" id="sliderWrap" style="position:relative;">
+        <div class="loc-dot" id="sliderDot" style="position:absolute;z-index:20;"></div>
+        <div class="map-slider" id="mapSlider">
+          <!-- fondo: unam_layout en gris -->
+          <div class="map-slider-back">
+            <img src="images/unam_layout_escalado_inv.png" alt="Master plan of CU.">
+          </div>
+          <!-- frente: space_syntax transparente encima -->
+          <div class="map-slider-front" id="sliderFront">
+            <img src="images/space_syntax_escalado_viv.png" alt="Space syntax axial map of CU.">
+          </div>
+          <!-- leyenda flotante inferior izquierda -->
+          <div class="map-legend-float">
+            <div class="syntax-legend-bar"></div>
+            <div class="syntax-legend-labels"><span>Low</span><span>High</span></div>
+          </div>
+          <!-- botón flotante -->
+          <button id="toggleAnnotBtn" style="position:absolute;top:12px;right:12px;z-index:10;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;background:#000;border:none;color:#fff;text-decoration:underline;padding:.3rem .7rem;cursor:pointer;">Explore annotations →</button>
+          <!-- divisor -->
+          <div class="map-slider-divider" id="sliderDivider">
+            <div class="map-slider-handle">&#8596;</div>
+          </div>
+        </div>
+        <div class="map-slider-labels">
+          <span>Axial map · global integration</span>
+          <span>Master plan · Pani &amp; Del Moral, 1954</span>
+        </div>
+        <figcaption class="map-slider-caption">Drag to reveal the master plan beneath the axial map. The covisibility map below analyses the western and central zone of the campus. Master plan source: Lizárraga &amp; López (eds.), <em>Habitar CU 60 años</em>, UNAM, 2014.</figcaption>
+      </figure>
+
+
+      <figure class="syntax-annotated map-highlight" id="annotatedMap" style="background:none; display:none; margin: 7.5rem -48px 2.5rem; position:relative;">
+        <div class="loc-dot" id="annotatedDot" style="position:absolute;z-index:20;"></div>
+        <div class="syntax-img-wrap">
+          <img src="images/space_syntax_1.png" alt="Space syntax axial map of Ciudad Universitaria.">
+          <svg class="syntax-overlay" viewBox="0 0 1562 1006" xmlns="http://www.w3.org/2000/svg" overflow="visible" style="margin-bottom: 280px;">
+            <defs>
+              <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 L2,5 z" fill="#aaa"/>
+              </marker>
+              <marker id="arr-hover" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 L2,5 z" fill="#0000ff"/>
+              </marker>
+            </defs>
+
+            <!-- RECTORÍA: (574,326)flota izquierda -->
+            <g class="ann-group">
+              <circle cx="574" cy="326" r="10" fill="#bbb" class="ann-dot"/>
+              <path d="M574,316 C520,100 460,-80 400,-180" stroke="#bbb" stroke-width="2" fill="none" stroke-dasharray="8,6" marker-end="url(#arr)"/>
+              <text x="390" y="-210" class="syn-label" text-anchor="end">Rectoría</text>
+              <text x="390" y="-184" class="syn-sub" text-anchor="end">High global integration.</text>
+              <text x="390" y="-160" class="syn-sub" text-anchor="end">Greatest concentration of long-stay</text>
+              <text x="390" y="-136" class="syn-sub" text-anchor="end">social activity. Visual openness</text>
+              <text x="390" y="-112" class="syn-sub" text-anchor="end">amplifies collective visibility.</text>
+            </g>
+
+            <!-- LAS ISLAS: (728,253)flota arriba izquierda -->
+            <g class="ann-group">
+              <circle cx="728" cy="253" r="10" fill="#bbb" class="ann-dot"/>
+              <path d="M724,243 C600,80 520,-60 580,-150" stroke="#bbb" stroke-width="2" fill="none" stroke-dasharray="8,6" marker-end="url(#arr)"/>
+              <text x="596" y="-175" class="syn-label" text-anchor="start">Las Islas</text>
+              <text x="596" y="-149" class="syn-sub" text-anchor="start">Most integrated node in the pedestrian network.</text>
+              <text x="596" y="-125" class="syn-sub" text-anchor="start">Convergence point across faculties.</text>
+              <text x="596" y="-101" class="syn-sub" text-anchor="start">Where casual encounter becomes political assembly.</text>
+            </g>
+
+            <!-- BIBLIOTECA CENTRAL: (617,248)flota arriba derecha -->
+            <g class="ann-group">
+              <circle cx="617" cy="248" r="10" fill="#bbb" class="ann-dot"/>
+              <path d="M626,240 C900,320 1300,-120 1420,-140" stroke="#bbb" stroke-width="2" fill="none" stroke-dasharray="8,6" marker-end="url(#arr)"/>
+              <text x="1430" y="-190" class="syn-label" text-anchor="start">Biblioteca Central</text>
+              <text x="1430" y="-164" class="syn-sub" text-anchor="start">Second most integrated zone.</text>
+              <text x="1430" y="-140" class="syn-sub" text-anchor="start">High accessibility. Open space</text>
+              <text x="1430" y="-116" class="syn-sub" text-anchor="start">connects directly with buildings.</text>
+            </g>
+
+            <!-- INSTITUTOS: (1235,579)flota derecha -->
+            <g class="ann-group">
+              <circle cx="1235" cy="579" r="10" fill="#bbb" class="ann-dot"/>
+              <path d="M1245,577 C1480,700 1620,400 1740,520" stroke="#bbb" stroke-width="2" fill="none" stroke-dasharray="8,6" marker-end="url(#arr)"/>
+              <text x="1750" y="488" class="syn-label" text-anchor="start">Research institutes</text>
+              <text x="1750" y="514" class="syn-sub" text-anchor="start">Most segregated zone of the</text>
+              <text x="1750" y="538" class="syn-sub" text-anchor="start">pedestrian network. Limited</text>
+              <text x="1750" y="562" class="syn-sub" text-anchor="start">connectivity, low pedestrian flow.</text>
+            </g>
+
+            <!-- FRONTONES: (810,675)flota abajo izquierda, bajo Rectoría -->
+            <g class="ann-group">
+              <circle cx="810" cy="675" r="10" fill="#bbb" class="ann-dot"/>
+              <path d="M820,680 C1100,780 1400,850 1600,900" stroke="#bbb" stroke-width="2" fill="none" stroke-dasharray="8,6" marker-end="url(#arr)"/>
+              <text x="1610" y="876" class="syn-label" text-anchor="start">Frontones</text>
+              <text x="1610" y="902" class="syn-sub" text-anchor="start">Highest syntactic integration on campus,</text>
+              <text x="1610" y="926" class="syn-sub" text-anchor="start">yet lowest occupancy. Post-incident fencing</text>
+              <text x="1610" y="950" class="syn-sub" text-anchor="start">converted open space into a closed corridor,</text>
+              <text x="1610" y="974" class="syn-sub" text-anchor="start">degrading its original spatial quality.</text>
+            </g>
+
+
+          </svg>
+          <!-- leyenda flotante inferior izquierda -->
+          <div class="map-legend-float">
+            <div class="syntax-legend-bar"></div>
+            <div class="syntax-legend-labels"><span>Low</span><span>High</span></div>
+          </div>
+        </div>
+      </figure>
+      <p id="annotatedMapCaption" style="display:none;font-family:system-ui,sans-serif;font-size:.7rem;color:#999;line-height:1.5;margin:.4rem 0 .7rem;">Global integration or accessibility of the pedestrian mobility network from CU's axial map. Warm tones (red/yellow) indicate high topological integrationthe most accessible spaces where co-presence is greatest. Cool tones (blue) indicate segregated areas. Elaborated by the authors based on the land registry of Coyoacán borough, analysed with DepthmapX. Source: <a href="https://revistas.unam.mx/index.php/aca/article/view/76678" target="_blank" rel="noopener">Ortíz-Chao (2020)</a>.</p>
+
+      <figure class="inline-img map-highlight" id="covisMap" style="background:none;">
+        <div style="position:relative; width:60%; margin: 0 auto; overflow:visible;" id="covisWrap">
+          <img src="images/space_syntax_2.png" alt="Covisibility analysis of CU western zone." style="width:100%; display:block;" id="covisImg">
+          <!-- círculo de localización covisibility -->
+          <div class="loc-dot" id="covisDot"></div>
+          <svg id="covisSvg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 1078 1134">
+            <style>
+              .covis-label { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 400; fill: #fff; letter-spacing: .06em; text-transform: uppercase; }
+              .covis-bg { fill: #000; }
+            </style>
+            <!-- Rectoría -->
+            <g>
+              <rect class="covis-bg" x="602" y="732" width="180" height="26" rx="0"/>
+              <text x="692" y="751" class="covis-label" text-anchor="middle">RECTORÍA</text>
+            </g>
+            <!-- Las Islas -->
+            <g>
+              <rect class="covis-bg" x="865" y="636" width="140" height="26" rx="0"/>
+              <text x="1005" y="655" class="covis-label" text-anchor="end">LAS ISLAS</text>
+            </g>
+            <!-- Bib. Central -->
+            <g>
+              <rect class="covis-bg" x="796" y="444" width="150" height="26" rx="0"/>
+              <text x="946" y="463" class="covis-label" text-anchor="end">BIB. CENTRAL</text>
+            </g>
+            <!-- Estadio -->
+            <g>
+              <rect class="covis-bg" x="149" y="747" width="100" height="26" rx="0"/>
+              <text x="149" y="766" class="covis-label" text-anchor="start">ESTADIO</text>
+            </g>
+            <!-- Arquitectura -->
+            <g>
+              <rect class="covis-bg" x="474" y="962" width="180" height="26" rx="0"/>
+              <text x="564" y="981" class="covis-label" text-anchor="middle">ARQUITECTURA</text>
+            </g>
+            <!-- Filosofía y Letras -->
+            <g>
+              <rect class="covis-bg" x="768" y="320" width="220" height="26" rx="0"/>
+              <text x="988" y="339" class="covis-label" text-anchor="end">FILOSOFÍA Y LETRAS</text>
+            </g>
+            <!-- Explanada Rectoría -->
+            <g>
+              <rect class="covis-bg" x="453" y="757" width="280" height="26" rx="0"/>
+              <text x="593" y="776" class="covis-label" text-anchor="middle">EXPLANADA RECTORÍA</text>
+            </g>
+            <!-- Patio Arquitectura -->
+            <g>
+              <rect class="covis-bg" x="812" y="1016" width="226" height="26" rx="0"/>
+              <text x="1038" y="1035" class="covis-label" text-anchor="end">PATIO ARQUITECTURA</text>
+            </g>
+            <!-- Pasillos -->
+            <g>
+              <rect class="covis-bg" x="318" y="726" width="136" height="26" rx="0"/>
+              <text x="386" y="745" class="covis-label" text-anchor="middle">PASILLOS</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>
+          <div class="syntax-legend" style="background:none;">
+            <span class="syntax-legend-title">Covisibility</span>
+            <div class="syntax-legend-bar"></div>
+            <div class="syntax-legend-labels">
+              <span>Low · enclosed</span>
+              <span>High · mutual visibility</span>
+            </div>
+          </div>
+        </figcaption>
+        <figcaption>Covisibility analysis of CU's western zone (left) and eastern zone (right), elaborated with Isovist. Covisibility measures the average visible area within one connection step from any given locationin other words, the capacity to see and be seen mutually. Warm tones (red/orange) mark the spaces of highest co-presence potential: the Filosofía y Letras area, open corridors between faculties, and the spaces around Rectoría. These are the same locations where political gatherings concentrate and amplifynot by accident, but because their spatial configuration makes mutual visibility structurally inevitable. Cool tones (blue) indicate enclosed or obstructed spaces where co-presence is limited. Source: <a href="#ref-ortiz-chao-2024">Ortíz-Chao et al. (2024)</a>.
+        </figcaption>
+      </figure>
+      </div><!-- fin mapsWrapper -->
+
+      <p>Unlike gated campuses, CU is legally autonomous and spatially porous, enabling student movements with limited external interference. Its open layout concentrates political energy and amplifies visibility: students from different faculties converge at shared nodes, encounter one another in circulation, and gather at symbolically loaded sites. Over time, this has made CU a recurring reference point for national unrest—a campus whose spatial form does not merely accommodate protest but makes it structurally more likely.</p>
+
+      <p>CU has hosted pivotal mobilisations at each major moment of political crisis: the 1968 protests against state repression, culminating in the Tlatelolco massacre when the military occupied the campus; the 2014 response to the Ayotzinapa disappearances, when students took over the Rectorate and Las Islas became a site to receive the victims' families; and the 2019–2020 feminist protests against sexual violence. Each event illustrates how CU functions as both symbolic stage and spatial infrastructure for dissent.</p>
+
+      <p>Hillier's three laws of spatial form and society (<a href="#ref-hillier-1989">1989</a>) explain why. The first law holds that spatial forms are shaped by the needs and values of the society that creates them: CU's open layout, central green spaces, and visual openness were designed to embody democratic access and intellectual exchange. The second law proposes that once created, spatial arrangements exert influence back on society by structuring movement, interaction, and visibility: in CU, these features actively enable co-presence and make mobilisation easier. The third law explains that over time, the relationship between space and society becomes embedded: the repeated use of CU as a site of protest has created expectations and traditions. The campus is now culturally understood as a space of political action—and that understanding itself reproduces the conditions for action.</p>
+
+
+
+      <p>Space syntax accounts for CU's configurational logic, but not for the meanings that accumulate within it. Doreen Massey's relational conception of space (<a href="#ref-massey">2005</a>) offers a complementary lens: space is not a neutral container but a product of social relationships, layered in time, and always in the process of being made.</p>
+
+      <p>Applied to CU, Massey's framework reveals three dimensions. First, places acquire meaning through use: Las Islas and the Rectoría esplanade carry political weight not because of their geometry alone, but because of what has happened in them—marches, occupations, vigils—repeated across decades. Second, space is the sphere of multiplicity: CU holds simultaneous, overlapping histories that coexist in murals, renamed buildings, and protest rituals. The 1968 movement, the Ayotzinapa solidarity, the feminist occupations of 2020 are not separate episodes but sedimentary layers that give the campus its political density. Third, space is always being produced (<a href="#ref-massey">Massey, 2005</a>): CU's influence does not stop at its boundaries. Marches that begin here move toward the city centre, extending the political energy of the campus into the urban fabric—making CU not just a host of movements, but an engine that shapes their geography.</p>
+
+      <figure class="inline-video">
+        <video controls playsinline muted loop>
+          <source src="images/cu_march.mp4" type="video/mp4">
+        </video>
+        <figcaption>A march departing from CU moves through the city, carrying the political energy generated on campus into the urban fabric of Mexico City. Source: <a href="https://www.instagram.com/mujeres_organizadas_fa/" target="_blank" rel="noopener">@mujeres_organizadas_fa</a>.</figcaption>
+      </figure>
+
+      <p>What emerges from both frameworks is a coherent picture: CU is a space that has been designed to enable encounter, used to produce dissent, and charged with enough political memory that each new movement arrives to a campus that already knows what to do. Las Islas concentrates people because its geometry demands it. The Rectoría esplanade amplifies gatherings because its openness makes them visible. The campus boundary dissolves into the city not only legally but spatially—marches do not end at the gate. The argument is not that space determines politics, but that in CU, space and politics have become mutually constitutive: each protest reshapes the meaning of the campus, and the campus shapes the form each protest takes.</p>
+
+
+      <section class="refs">
+        <h2>References</h2>
+        <ul>
+          <li id="ref-hillier-1989">Hillier, B. (1989) 'The Architecture of the Urban Object', <em>Ekistics</em>, 334–335, pp. 5–21.</li>
+          <li id="ref-hillier-hanson">Hillier, B. and Hanson, J. (1984) <em>The Social Logic of Space</em>. 1st edn. Cambridge: Cambridge University Press.</li>
+          <li id="ref-hillier-1996">Hillier, B. (1996) <em>Space is the Machine: A Configurational Theory of Architecture</em>. Cambridge: Cambridge University Press. (Electronic edn., 2007.)</li>
+          <li id="ref-massey">Massey, D. (2005) <em>For Space</em>. London: SAGE Publications.</li>
+          <li id="ref-mello">Mello, R.G. (ed.) (2022) <em>UNAM: 100 años de muralismo</em>. Ciudad de México: UNAM, Dirección General de Comunicación Social.</li>
+          <li id="ref-lizarraga">Lizárraga, S. and López, C. (eds.) (2014) <em>Habitar CU 60 años</em>. México: UNAM, pp. 140–141.</li>
+          <li id="ref-ortiz-chao">Ortíz-Chao, C.G. (2020) 'Configuración espacial, vitalidad urbana y riesgo de robo: el caso de la Ciudad Universitaria de la UNAM', <em>Academia XXII</em>, 11(21), pp. 149–173. <a href="https://doi.org/10.22201/fa.2007252Xp.2020.21.76678" target="_blank" rel="noopener">doi</a>.</li>
+          <li id="ref-ortiz-chao-2024">Ortíz-Chao, C.G., Pereyra Flores, A. and Sandoval del Valle, N.S. (2024) 'Percepción de inseguridad y visibilidad en Ciudad Universitaria', <em>Academia XXII</em>, 15(30), pp. 215–243. <a href="https://doi.org/10.22201/fa.2007252Xp.2024.15.30.90225" target="_blank" rel="noopener">doi</a>.</li>
+        </ul>
+      </section>
+
+    </article>
+  </div>
+
+<script>
+  document.querySelectorAll('.ann-group').forEach(function(g) {
+    var path = g.querySelector('path');
+    var dot = g.querySelector('circle');
+    if (!dot) return;
+    dot.addEventListener('mouseenter', function() {
+      if (path) path.setAttribute('marker-end', 'url(#arr-hover)');
+    });
+    dot.addEventListener('mouseleave', function() {
+      if (path) path.setAttribute('marker-end', 'url(#arr)');
+    });
+    g.addEventListener('mouseenter', function() {
+      if (path) path.setAttribute('marker-end', 'url(#arr-hover)');
+      if (dot) dot.setAttribute('r', '15');
+    });
+    g.addEventListener('mouseleave', function() {
+      if (path) path.setAttribute('marker-end', 'url(#arr)');
+      if (dot) dot.setAttribute('r', '10');
+    });
+  });
+</script>
+<script>
+  // map slider
+  var slider = document.getElementById('mapSlider');
+  var front = document.getElementById('sliderFront');
+  var divider = document.getElementById('sliderDivider');
+  if (slider) {
+    var dragging = false;
+    function setSlider(x) {
+      var rect = slider.getBoundingClientRect();
+      var pct = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
+      front.style.width = (pct * 100) + '%';
+      divider.style.left = (pct * 100) + '%';
+    }
+    slider.addEventListener('mousedown', function(e) { dragging = true; setSlider(e.clientX); });
+    window.addEventListener('mousemove', function(e) { if (dragging) setSlider(e.clientX); });
+    window.addEventListener('mouseup', function() { dragging = false; });
+    slider.addEventListener('touchstart', function(e) { dragging = true; setSlider(e.touches[0].clientX); });
+    window.addEventListener('touchmove', function(e) { if (dragging) setSlider(e.touches[0].clientX); });
+    window.addEventListener('touchend', function() { dragging = false; });
+  }
+
+  // glossary tooltips positioned in right margin
+  document.querySelectorAll('.gloss').forEach(function(el) {
+    var tip = el.querySelector('.gloss-tip');
+    if (!tip) return;
+    el.addEventListener('mouseenter', function() {
+      var wrap = document.querySelector('.wrap');
+      var wrapRight = wrap.getBoundingClientRect().right;
+      var elRect = el.getBoundingClientRect();
+      var offset = parseInt(el.dataset.offset || 0);
+      tip.style.left = (wrapRight + 12) + 'px';
+      tip.style.top = (elRect.top + offset) + 'px';
+      tip.classList.add('visible');
+    });
+    el.addEventListener('mouseleave', function() {
+      tip.classList.remove('visible');
+    });
+  });
+
+  function alignLegend() {
+    var img = document.querySelector('.syntax-img-wrap img');
+    var figcaption = document.querySelector('.syntax-annotated figcaption');
+    var legend = document.querySelector('.syntax-legend');
+    if (!img || !figcaption) return;
+    var imgRect = img.getBoundingClientRect();
+    var figRect = figcaption.parentElement.getBoundingClientRect();
+    figcaption.style.marginLeft = (imgRect.left - figRect.left) + 'px';
+    figcaption.style.width = imgRect.width + 'px';
+    if (legend) {
+      legend.style.width = imgRect.width + 'px';
+      var legendRect = legend.getBoundingClientRect();
+      legend.style.marginLeft = '-' + (legendRect.left - imgRect.left) + 'px';
+    }
+  }
+  alignLegend();
+  window.addEventListener('resize', alignLegend);
+
+  function showMoment(id, btn) {
+    ['m68','m2014','mfem'].forEach(function(m) {
+      document.getElementById(m).style.display = m === id ? 'block' : 'none';
+    });
+    document.querySelectorAll('.moment-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+  }
+
+  // botón toggle experiencias
+  var btn = document.getElementById('toggleAnnotBtn');
+  var sliderWrap = document.getElementById('sliderWrap');
+  var annotatedMap = document.getElementById('annotatedMap');
+  var annotatedSyntaxImg = annotatedMap.querySelector('.syntax-img-wrap');
+
+  // annotatedMap necesita position:relative para anclar el botón
+  annotatedMap.style.position = 'relative';
+
+  var annotatedCaption = document.getElementById('annotatedMapCaption');
+
+  btn.addEventListener('click', function() {
+    if (annotatedMap.style.display === 'none' || annotatedMap.style.display === '') {
+      sliderWrap.style.display = 'none';
+      annotatedMap.style.display = 'block';
+      annotatedCaption.style.display = 'block';
+      btn.textContent = '← Back to map';
+      annotatedMap.appendChild(btn);
+    } else {
+      sliderWrap.style.display = 'block';
+      annotatedMap.style.display = 'none';
+      annotatedCaption.style.display = 'none';
+      btn.textContent = 'Explore annotations →';
+      document.getElementById('mapSlider').appendChild(btn);
+    }
+  });
+
+  // ── LOCATION DOTS ──
+  function showDots(item) {
+    var covis = item.dataset.covis.split(',');
+    var slider = item.dataset.slider.split(',');
+
+    var covisWrap = document.getElementById('covisWrap');
+    var covisDot = document.getElementById('covisDot');
+    var covisImg = document.getElementById('covisImg');
+    var cr = covisImg.getBoundingClientRect();
+    var wr = covisWrap.getBoundingClientRect();
+    covisDot.style.left = (parseFloat(covis[0]) / 1078 * cr.width + cr.left - wr.left) + 'px';
+    covisDot.style.top  = (parseFloat(covis[1]) / 1134 * cr.height + cr.top - wr.top) + 'px';
+    covisDot.style.display = 'block';
+
+    var sliderEl = document.getElementById('mapSlider');
+    var sliderWrapEl = document.getElementById('sliderWrap');
+    var sliderDot = document.getElementById('sliderDot');
+    var annotatedDot = document.getElementById('annotatedDot');
+    var sr = sliderEl.getBoundingClientRect();
+    var wr2 = sliderWrapEl.getBoundingClientRect();
+    var dotLeft = (parseFloat(slider[0]) / 1562 * sr.width + sr.left - wr2.left) + 'px';
+    var dotTop  = (parseFloat(slider[1]) / 1006 * sr.height + sr.top - wr2.top) + 'px';
+    sliderDot.style.left = dotLeft;
+    sliderDot.style.top  = dotTop;
+    sliderDot.style.display = 'block';
+
+    var annotatedEl = document.getElementById('annotatedMap');
+    var annotatedImgEl = annotatedEl.querySelector('img');
+    if (annotatedImgEl) {
+      var ar = annotatedImgEl.getBoundingClientRect();
+      var amr = annotatedEl.getBoundingClientRect();
+      annotatedDot.style.left = (parseFloat(slider[0]) / 1562 * ar.width + ar.left - amr.left) + 'px';
+      annotatedDot.style.top  = (parseFloat(slider[1]) / 1006 * ar.height + ar.top - amr.top) + 'px';
+      annotatedDot.style.display = 'block';
+    }
+  }
+
+  function hideDots() {
+    document.getElementById('covisDot').style.display = 'none';
+    document.getElementById('sliderDot').style.display = 'none';
+    document.getElementById('annotatedDot').style.display = 'none';
+  }
+
+  document.querySelectorAll('.photo-item[data-covis]').forEach(function(item) {
+    item.addEventListener('mouseenter', function() { showDots(this); });
+    item.addEventListener('mouseleave', function() { hideDots(); });
+    item.addEventListener('click', function() {
+      var mapSection = document.getElementById('sliderWrap');
+      var target = mapSection.style.display === 'none'
+        ? document.getElementById('annotatedMap')
+        : mapSection;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+
+</script>
+</body>
+</html>
