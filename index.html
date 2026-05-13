@@ -506,10 +506,14 @@
     .refs a { color: #555; text-decoration: underline; text-underline-offset: 3px; }
     .refs a:hover { color: #111; }
 
-    @media (max-width: 600px) {
-      .hero { padding: 36px 20px 0; }
-      .wrap { padding: 32px 20px 72px; }
-      .content p:first-of-type::first-letter { font-size: 3.2rem; }
+    @media (max-width: 760px) {
+      .hero { margin: 0; padding: 36px 20px 0; }
+      .wrap { margin: 0; padding: 32px 20px 72px; }
+      figure.map-slider-wrap { margin-left: 0; margin-right: 0; }
+      .syntax-annotated { margin-left: 0 !important; margin-right: 0 !important; }
+      .inline-img { margin-left: -20px; margin-right: -20px; }
+      .inline-video { margin-left: -20px; margin-right: -20px; }
+      .photo-col { display: none; }
     }
 
     /* ── PHOTO LAYER ── */
