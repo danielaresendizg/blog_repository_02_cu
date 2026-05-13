@@ -506,14 +506,61 @@
     .refs a { color: #555; text-decoration: underline; text-underline-offset: 3px; }
     .refs a:hover { color: #111; }
 
+    /* ── MOBILE PHOTO STRIP ── */
+    .mobile-photos {
+      display: none;
+    }
     @media (max-width: 760px) {
       .hero { margin: 0; padding: 36px 20px 0; }
-      .wrap { margin: 0; padding: 32px 20px 72px; }
+      .wrap { margin: 0; padding: 32px 20px 48px; }
       figure.map-slider-wrap { margin-left: 0; margin-right: 0; }
       .syntax-annotated { margin-left: 0 !important; margin-right: 0 !important; }
       .inline-img { margin-left: -20px; margin-right: -20px; }
       .inline-video { margin-left: -20px; margin-right: -20px; }
       .photo-col { display: none; }
+      .mobile-photos {
+        display: block;
+        background: #111;
+        padding: 32px 16px 48px;
+      }
+      .mobile-photos-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .6rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #666;
+        border-bottom: 1px solid #222;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+      }
+      .mobile-photos-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+      }
+      .mobile-photo-item img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(20%);
+      }
+      .mobile-photo-caption {
+        font-family: system-ui, sans-serif;
+        font-size: .58rem;
+        color: #888;
+        line-height: 1.4;
+        padding: 4px 2px 12px;
+      }
+      .mobile-photo-caption strong {
+        display: block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: .5rem;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: #c0392b;
+        margin-bottom: 2px;
+      }
     }
 
     /* ── PHOTO LAYER ── */
@@ -943,6 +990,45 @@
       </section>
 
     </article>
+  </div>
+
+  <!-- MOBILE PHOTO STRIP — solo visible en móvil -->
+  <div class="mobile-photos">
+    <div class="mobile-photos-label">Historical moments · CU</div>
+    <div class="mobile-photos-grid">
+      <div class="mobile-photo-item">
+        <img src="images/unam_68.webp" alt="1968">
+        <div class="mobile-photo-caption"><strong>Estadio Olímpico · 1968</strong>Army occupies CU days before Tlatelolco. <em>UNAM / Insurgentes</em></div>
+      </div>
+      <div class="mobile-photo-item">
+        <img src="images/unam_68_2.webp" alt="1968">
+        <div class="mobile-photo-caption"><strong>Las Islas · 1968</strong>Rector Barros Sierra marches with students. <em>UNAM Global</em></div>
+      </div>
+      <div class="mobile-photo-item">
+        <img src="images/unam_68_3.jpeg" alt="1968">
+        <div class="mobile-photo-caption"><strong>Filosofía corridor · 1968</strong>Students detained by armed soldiers. <em>AGN, DFS</em></div>
+      </div>
+      <div class="mobile-photo-item">
+        <img src="images/unam_43_1.jpg" alt="2014">
+        <div class="mobile-photo-caption"><strong>Pasillos Filosofía · 2014</strong>Portraits of the 43 disappeared. <em>Regeneración.mx</em></div>
+      </div>
+      <div class="mobile-photo-item">
+        <img src="images/unam_43_2.webp" alt="2014">
+        <div class="mobile-photo-caption"><strong>Filosofía y Letras · 2014</strong>43 empty chairs, each with a face. <em>Cuartoscuro</em></div>
+      </div>
+      <div class="mobile-photo-item">
+        <img src="images/unam_fem_1.jpg" alt="2019–2020">
+        <div class="mobile-photo-caption"><strong>Explanada Rectoría · 2019</strong>Un violador en tu camino. <em>Galo Cañas / Cuartoscuro</em></div>
+      </div>
+      <div class="mobile-photo-item">
+        <img src="images/unam_fem_2.png" alt="2019–2020">
+        <div class="mobile-photo-caption"><strong>Patio Arquitectura · 2020</strong>Feminist slogans on campus floor. <em>@mujeres_organizadas_fa</em></div>
+      </div>
+      <div class="mobile-photo-item">
+        <img src="images/unam_fem_3.png" alt="2019–2020">
+        <div class="mobile-photo-caption"><strong>Las Islas · 2019</strong>Protesters occupy the steps of CU. <em>@mujeres_organizadas_fa</em></div>
+      </div>
+    </div>
   </div>
 
 <script>
