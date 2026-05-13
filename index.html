@@ -511,12 +511,20 @@
       display: none;
     }
     @media (max-width: 760px) {
+      body { overflow-x: hidden; }
       .hero { margin: 0; padding: 36px 20px 0; }
       .wrap { margin: 0; padding: 32px 20px 48px; }
-      figure.map-slider-wrap { margin-left: 0; margin-right: 0; }
-      .syntax-annotated { margin-left: 0 !important; margin-right: 0 !important; }
-      .inline-img { margin-left: -20px; margin-right: -20px; }
-      .inline-video { margin-left: -20px; margin-right: -20px; }
+      figure.map-slider-wrap { margin: 2rem 0 1rem; }
+      .map-slider-labels { padding: .4rem 0 0; }
+      .map-slider-caption { padding: .3rem 0 .7rem; }
+      .syntax-annotated { margin: 2rem 0 1rem !important; }
+      .syntax-overlay { display: none; }
+      .map-legend-float { display: none; }
+      #annotatedMapCaption { margin: .4rem 0 .7rem !important; }
+      #covisMap { margin: 0 !important; }
+      #covisWrap { width: 100% !important; }
+      .inline-img { margin: 2rem 0; }
+      .inline-video { margin: 2rem 0; }
       .photo-col { display: none; }
       .mobile-photos {
         display: block;
